@@ -1,0 +1,83 @@
+{
+  "catalog": {
+    "events": 181600,
+    "years": [
+      2000,
+      2025
+    ],
+    "mainshocks_after_declustering": 56463,
+    "share_in_clusters": 0.689
+  },
+  "gutenberg_richter": {
+    "mc": 4.7,
+    "b_all": 1.141,
+    "b_all_ci95": [
+      1.134,
+      1.149
+    ],
+    "b_declustered": 0.917,
+    "b_declustered_ci95": [
+      0.907,
+      0.927
+    ]
+  },
+  "omori": {
+    "M9.1 2004 Sumatra - Andaman Islands Earthquake": {
+      "K": 123.0293,
+      "c": 0.169,
+      "p": 0.63,
+      "n": 2778
+    },
+    "M9.1 2011 Great Tohoku Earthquake, Japan": {
+      "K": 462.0532,
+      "c": 0.4523,
+      "p": 0.9578,
+      "n": 3457
+    },
+    "M8.8 2010 Maule, Chile Earthquake": {
+      "K": 187.2894,
+      "c": 0.3005,
+      "p": 1.04,
+      "n": 1215
+    },
+    "M8.8 2025 Kamchatka Peninsula, Russia Earthquake": {
+      "K": 246.9847,
+      "c": 0.2372,
+      "p": 1.0576,
+      "n": 1606
+    }
+  },
+  "aftershock_model": {
+    "task": "P(M>=5.5 within GK radius, days 1-30 | M>=6 mainshock, first 24h observed)",
+    "n_train": 2933,
+    "n_test": 931,
+    "base_rate_train": 0.241,
+    "base_rate_test": 0.202,
+    "results": {
+      "Baseline: logistic on magnitude only": {
+        "roc_auc": 0.605,
+        "pr_auc": 0.326,
+        "brier": 0.155
+      },
+      "Logistic regression (all features)": {
+        "roc_auc": 0.82,
+        "pr_auc": 0.643,
+        "brier": 0.114
+      },
+      "Gradient boosting (all features)": {
+        "roc_auc": 0.807,
+        "pr_auc": 0.594,
+        "brier": 0.12
+      }
+    },
+    "permutation_importance": {
+      "n_aft_24h": 0.0864,
+      "n_fore_30d": 0.0313,
+      "max_aft_mag_24h": 0.0211,
+      "depth": 0.0202,
+      "mag": 0.0072,
+      "bg_rate_365d": 0.005,
+      "abs_lat": -0.0043
+    }
+  }
+}
